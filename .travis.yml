@@ -1,0 +1,19 @@
+language: python
+dist: xenial
+
+python:
+  - '3.5'
+  - '3.6'
+  - '3.7'
+  - '3.8'
+
+install:
+  - pip install --upgrade -e . -r requirements-dev.txt
+
+script:
+  - black --check .
+  - pylint -E sdmpm
+  # https://github.com/darrenburns/ward/issues/157
+  - ward --path tests
+
+sudo: false
