@@ -13,7 +13,6 @@ install:
 script:
   - black --check .
   - pylint -E sdmpm
-  # https://github.com/darrenburns/ward/issues/157
-  - ward --path tests
+  - ward
 
 sudo: false
