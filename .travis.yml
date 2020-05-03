@@ -3,21 +3,18 @@ dist: xenial
 sudo: false
 
 python:
-  - '3.5'
-  - '3.6'
-  - '3.7'
   - '3.8'
-
-install:
-  - pip install --upgrade -e . -r requirements-dev.txt
-
-script:
-  - pylint -E sdmpm
-  - ward
+  - '3.7'
+  - '3.6'
+install: pip install --upgrade -e . -r requirements/dev-ward.txt
+script: ward
 
 jobs:
   include:
     - name: black
-      python: '3.8'
-      install: pip install black
+      install: pip install -r requirements/dev-black.txt
       script: black --check .
+
+    - name: pylint
+      install: pip install -r requirements/dev-pylint.txt
+      script: pylint -E .
