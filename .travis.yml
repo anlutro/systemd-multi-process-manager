@@ -17,4 +17,4 @@ jobs:
 
     - name: pylint
       install: pip install -r requirements/dev-pylint.txt
-      script: pylint -E .
+      script: pylint -E src/
