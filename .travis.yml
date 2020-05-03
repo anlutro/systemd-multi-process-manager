@@ -1,5 +1,6 @@
 language: python
 dist: xenial
+sudo: false
 
 python:
   - '3.5'
@@ -11,8 +12,12 @@ install:
   - pip install --upgrade -e . -r requirements-dev.txt
 
 script:
-  - black --check .
   - pylint -E sdmpm
   - ward
 
-sudo: false
+jobs:
+  include:
+    - name: black
+      python: '3.8'
+      install: pip install black
+      script: black --check .
