@@ -30,6 +30,8 @@ def systemctl(args, *, user=False, capture_output=False):
     )
     stdout, stderr = proc.communicate()
     proc.wait()
+    if proc.returncode != 0:
+        raise SystemctlException(proc.returncode, cmd + args, stderr)
     if capture_output:
         return stdout
 
