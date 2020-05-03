@@ -10,12 +10,21 @@ class UserError(Exception):
     pass
 
 
+class SystemctlException(Exception):
+    def __init__(self, retcode, cmd, stderr):
+        msg = "systemctl %s failed with error code %d" % (cmd[1:], retcode)
+        super().__init__(msg)
+        self.retcode = retcode
+        self.cmd = cmd
+        self.stderr = stderr.strip()
+
+
 def systemctl(args, *, user=False, capture_output=False):
-    systemctl = ["systemctl", "--no-legend", "--no-pager"]
+    cmd = ["systemctl", "--no-legend", "--no-pager"]
     if user:
-        systemctl.append("--user")
+        cmd.append("--user")
     proc = subprocess.Popen(
-        systemctl + args,
+        cmd + args,
         stdout=subprocess.PIPE if capture_output else None,
         encoding="utf-8",
     )
@@ -135,9 +144,16 @@ def main(argv=None):
             parser.print_help()
         else:
             print("unknown command or not implemented:", args.cmd)
+            sys.exit(1)
+    except SystemctlException as exc:
+        print(exc)
+        print("cmd:", exc.cmd)
+        if exc.stderr:
+            print("stderr:\n" + exc.stderr)
+        sys.exit(2)
     except UserError as exc:
         print(exc)
-        sys.exit(1)
+        sys.exit(3)
 
 
 if __name__ == "__main__":
