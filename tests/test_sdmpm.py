@@ -30,6 +30,9 @@ def test_service():
     service_path = os.path.expanduser(
         "~/.config/systemd/user/" + service_name + "@.service"
     )
+    service_dir = os.path.dirname(service_path)
+    if not os.path.exists(service_dir):
+        os.makedirs(service_dir)
     with open(service_path, "wt") as fh:
         fh.write(test_service_file)
     try:
