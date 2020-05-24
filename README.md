@@ -1,10 +1,10 @@
-# SystemD multi-process manager
+# systemd multi-process manager
 
 [![Build Status](https://travis-ci.org/anlutro/systemd-multi-process-manager.svg?branch=master)](https://travis-ci.org/anlutro/systemd-multi-process-manager)
 [![Latest version on PyPI](https://img.shields.io/pypi/v/sdmpm?maxAge=2592000)](https://pypi.python.org/pypi/sdmpm)
 ![License](https://img.shields.io/github/license/anlutro/systemd-multi-process-manager.svg)
 
-SystemD supports multiple processes of the exact same type using templating. However, it's very tedious to scale the number of processes up or down. This script aims to simplify that.
+`systemd` supports multiple processes of the exact same type using templating. However, it's very tedious to scale the number of processes up or down. This script aims to simplify that.
 
 ## Installation
 
