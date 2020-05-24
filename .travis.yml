@@ -1,6 +1,11 @@
+branches:
+  - master
+
 language: python
 dist: xenial
 sudo: false
+cache:
+  pip: true
 
 python:
   - '3.8'
