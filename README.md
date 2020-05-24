@@ -8,16 +8,14 @@
 
 ## Installation
 
-The script is published on PyPI under the name `sdmpm`.
+The script is published on PyPI under the name `sdmpm`. You can install it in many different ways:
 
 1. Use a tool like [pipx](https://github.com/pipxproject/pipx) or [psm](https://github.com/anlutro/psm) to install this script into a dedicated virtualenv: `psm install sdmpm`
-2. Install using pip: `pip install sdmpm` (preferably with `--user` or in a virtualenv)
-
-You can also just download the script directly from Github, it has no external dependencies and is tested on Python 3.5 and higher.
-
-```bash
-wget https://github.com/anlutro/systemd-multi-process-manager/raw/master/src/sdmpm.py -o /usr/local/bin/sdmpm
-```
+2. Install using plain pip: `pip install sdmpm` (preferably with `--user` or in a virtualenv)a
+3. Download the script directly from Github - it has no external dependencies and is tested on Python 3.5 and higher:
+   ```bash
+   wget https://github.com/anlutro/systemd-multi-process-manager/raw/master/src/sdmpm.py -o /usr/local/bin/sdmpm
+   ```
 
 ## Usage
 
