@@ -13,25 +13,6 @@ name: run-tests
     - cron: '0 8 1 * *'
 
 jobs:
-  ward:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version:
-          - '3.6'
-          - '3.7'
-          - '3.8'
-          - '3.9'
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - run: pip install --upgrade -e . -r requirements/dev-ward.txt
-      - run: |
-          export XDG_RUNTIME_DIR=/run/user/$(id -u)
-          ward
-
   black:
     runs-on: ubuntu-latest
     steps:
