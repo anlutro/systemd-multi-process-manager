@@ -27,7 +27,9 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install --upgrade -e . -r requirements/dev-ward.txt
+      - run: |
+          sudo apt-get install -y --no-install-recommends systemd
+          pip install --upgrade -e . -r requirements/dev-ward.txt
       - run: ward
 
   black:
